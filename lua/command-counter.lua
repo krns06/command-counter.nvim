@@ -17,7 +17,7 @@ M.key_logger = function(key, typed)
                                 -- 仕様？なのかわからないけどBSを打つと<80>kbに変換されてしまう。(80は16進数)
                                 -- 謎なので0x80で挟むようにする。
 
-                                local first = string.sub(key, 1, 1):byte()
+                                local first = vim.fn.char2nr(key)
                                 if first == 128 then
                                         file:write(key .. string.char(128))
                                 else
