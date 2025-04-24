@@ -8,7 +8,8 @@ M.key_logger = function(key, typed)
         local mode = vim.api.nvim_get_mode().mode
         local file = io.open(M.config.output_path, "a")
         if file then
-                if mode ~= "i" then
+                if mode == "t" then
+                elseif mode ~= "i" then
                         if key == ":" and typed ~= ":" then
                                 -- 内部的にコマンドとして実行される場合に実行される
                                 -- 想定としてはspace+fとかに設定しているときに内部的には:が実行され、typedにfが設定されるっぽい
